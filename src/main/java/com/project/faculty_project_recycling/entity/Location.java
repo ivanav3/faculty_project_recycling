@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.entity;
+package com.project.faculty_project_recycling.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long postalCode;
+    private String postalCode;
 
     private Long state;
 
@@ -34,14 +35,20 @@ public class Location {
     public Location() {
     }
 
-    public Location(Long id, Long postalCode, Long state, List<Employee> employees) {
+    public Location(Long id, String postalCode, Long state) {
+        this.id = id;
+        this.postalCode = postalCode;
+        this.state = state;
+        employees = new ArrayList<>();
+
+    }
+
+    public Location(Long id, String postalCode, Long state, List<Employee> employees) {
         this.id = id;
         this.postalCode = postalCode;
         this.state = state;
         this.employees = employees;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -51,11 +58,11 @@ public class Location {
         this.id = id;
     }
 
-    public Long getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(Long postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

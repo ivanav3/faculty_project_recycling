@@ -2,11 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.entity;
+package com.project.faculty_project_recycling.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +17,10 @@ import java.util.List;
  *
  * @author HP
  */
+@Entity
 public class Manufacturer {
     
+    @Id
     private Long id;
     private String name;
     private Date dateFounded;
@@ -26,6 +31,15 @@ public class Manufacturer {
 
     public Manufacturer() {
     }
+
+    public Manufacturer(Long id, String name, Date dateFounded) {
+        this.id = id;
+        this.name = name;
+        this.dateFounded = dateFounded;
+        vehicles=new ArrayList<>();
+    }
+    
+    
 
     public Manufacturer(Long id, String name, Date dateFounded, List<Vehicle> vehicles) {
         this.id = id;
