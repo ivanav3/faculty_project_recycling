@@ -1,0 +1,28 @@
+name: Java Application
+on:
+  push:
+    branches: ["main", "featureBranch"]
+  pull_request:
+    branches: ["main", "featureBranch"]
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+          cache: maven
+
+      - name: Build Project
+        run: mvn clean package -DskipTests
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recycling-project-faculty
+          path: target
