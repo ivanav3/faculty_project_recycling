@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.dto;
+package com.project.faculty_project_recycling.dto;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,9 +13,9 @@ import java.util.List;
  * @author HP
  */
 
-public class LocationDto {
+public class LocationDto  implements Serializable{
     private Long id;
-    private Long postalCode;
+    private String postalCode;
 
     private Long state;
     
@@ -22,7 +24,14 @@ public class LocationDto {
     public LocationDto() {
     }
 
-    public LocationDto(Long id, Long postalCode, Long state, List<EmployeeDto> employees) {
+    public LocationDto(Long id, String postalCode, Long state) {
+        this.id = id;
+        this.postalCode = postalCode;
+        this.state = state;
+        employees=new ArrayList<>();
+    }
+
+    public LocationDto(Long id, String postalCode, Long state, List<EmployeeDto> employees) {
         this.id = id;
         this.postalCode = postalCode;
         this.state = state;
@@ -38,11 +47,11 @@ public class LocationDto {
         this.id = id;
     }
 
-    public Long getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(Long postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

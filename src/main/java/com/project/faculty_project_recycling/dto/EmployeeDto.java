@@ -2,40 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.entity;
+package com.project.faculty_project_recycling.dto;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author HP
  */
-@Entity
-public class Employee {
+public class EmployeeDto  implements Serializable{
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
     private Long location;
     
-    
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-            mappedBy = "employee")
-    private List<Timetable> timetables;
+    private List<TimetableDto> timetables;
 
-    public Employee() {
+    public EmployeeDto() {
     }
 
-    public Employee(Long id, String firstName, String lastName, Long location, List<Timetable> timetables) {
+    public EmployeeDto(Long id, String firstName, String lastName, Long location) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.location = location;
+        timetables=new ArrayList<>();
+    }
+
+    public EmployeeDto(Long id, String firstName, String lastName, Long location, List<TimetableDto> timetables) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,11 +73,11 @@ public class Employee {
         this.location = location;
     }
 
-    public List<Timetable> getTimetables() {
+    public List<TimetableDto> getTimetables() {
         return timetables;
     }
 
-    public void setTimetables(List<Timetable> timetables) {
+    public void setTimetables(List<TimetableDto> timetables) {
         this.timetables = timetables;
     }
     

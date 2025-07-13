@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.dto;
+package com.project.faculty_project_recycling.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author HP
  */
-public class TimetableDto {
+public class TimetableDto implements Serializable{
     
     private Date id;
     

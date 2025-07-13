@@ -2,48 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.recycling.recycling_project_faculty.entity;
+package com.project.faculty_project_recycling.dto;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author HP
  */
-@Entity
-public class Vehicle {
+public class VehicleDto implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long capacity;
     private Long weight;
 
     private Long manufacturer;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-            mappedBy = "vehicle")
-    private List<Timetable> timetables;
+    private List<TimetableDto> timetables;
 
-    public Vehicle() {
+    public VehicleDto() {
     }
 
-    public Vehicle(Long id, Long capacity, Long weight, Long manufacturer, List<Timetable> timetables) {
+    public VehicleDto(Long id, Long capacity, Long weight, Long manufacturer) {
+        this.id = id;
+        this.capacity = capacity;
+        this.weight = weight;
+        this.manufacturer = manufacturer;
+        timetables = new ArrayList<>();
+
+    }
+
+    public VehicleDto(Long id, Long capacity, Long weight, Long manufacturer, List<TimetableDto> timetables) {
         this.id = id;
         this.capacity = capacity;
         this.weight = weight;
         this.manufacturer = manufacturer;
         this.timetables = timetables;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -77,11 +74,11 @@ public class Vehicle {
         this.manufacturer = manufacturer;
     }
 
-    public List<Timetable> getTimetables() {
+    public List<TimetableDto> getTimetables() {
         return timetables;
     }
 
-    public void setTimetables(List<Timetable> timetables) {
+    public void setTimetables(List<TimetableDto> timetables) {
         this.timetables = timetables;
     }
 
